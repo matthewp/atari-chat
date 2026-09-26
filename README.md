@@ -1,6 +1,6 @@
 # atari-chat
 
-A chat client for Claude that runs on an Atari ST, as a GEM app in C.
+An AI chat client that runs on an Atari ST, as a GEM app in C.
 
 ![atari-chat running in Hatari](docs/screenshot.png)
 
@@ -11,7 +11,8 @@ connection: a WiFi modem on real hardware, or a small emulator script under
 [Hatari](https://hatari.frama.io/).
 
 Requests go through [Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/)'s
-OpenAI-compatible endpoint, so any model the gateway offers works.
+OpenAI-compatible endpoint, so it works with any model the gateway offers:
+Anthropic, OpenAI, Google, Workers AI and others.
 
 ## What you need
 
@@ -48,7 +49,7 @@ Fill in `.env`:
 |---|---|
 | `AIG_ACCOUNT_ID` | Your Cloudflare account ID |
 | `AIG_GATEWAY` | The gateway's name |
-| `AIG_MODEL` | Model in `provider/model` form, e.g. `anthropic/claude-sonnet-5` |
+| `AIG_MODEL` | Model in `provider/model` form, e.g. `openai/gpt-4.1-mini` or `anthropic/claude-sonnet-5` |
 | `AIG_TOKEN` | A Cloudflare API token, sent as `cf-aig-authorization` |
 | `PROVIDER_API_KEY` | The provider's key. Leave it empty with Unified Billing or keys stored in the gateway. |
 
@@ -92,7 +93,7 @@ Type a question and press **Return**.
 - **First question:** about 30 s. The Atari dials, does the TLS handshake
   (~12 s), and checks the server's identity (~7 s) before it sends anything
   secret.
-- **Follow-ups** reuse the connection, so you only wait for Claude.
+- **Follow-ups** reuse the connection, so you only wait for the model.
 - **After a long pause,** it reconnects automatically.
 
 The line under the title bar shows what it's doing.
