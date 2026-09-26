@@ -1,0 +1,12 @@
+# Build output. build/ is the emulator's drive C: and holds binaries with
+# the API token compiled in, so it must never be committed.
+build/
+obj/
+compile_flags.txt
+
+# Secrets
+.env
+
+# Runtime files
+emu/serial
+screenshots/
